@@ -1,0 +1,19 @@
+{
+  "name": "chaveqi_node",
+  "version": "1.0.0",
+  "description": "Verifica quem está utilizando as chaves da AltoQi via Node js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lucas Guedes",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/local-auth": "^3.0.0",
+    "express": "^4.18.2",
+    "google-spreadsheet": "^4.1.0",
+    "googleapis": "^126.0.1",
+    "puppeteer": "^21.2.1",
+    "telegraf": "^4.13.1"
+  }
+}
