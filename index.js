@@ -1,6 +1,6 @@
 const env = require('./.env')
 const puppeteer = require('puppeteer')
-require("dotenv").config()
+//require("dotenv").config()
 const { Telegraf } = require('telegraf')
 const { google } = require('googleapis')
 const { GoogleSpreadsheet } = require('google-spreadsheet')
@@ -87,8 +87,8 @@ async function logar(cod) {
           "--no-zygote",
         ],
         executablePath:
-            process.env.NODE_ENV === "production"
-                ? process.env.PUPPETEER_EXECUTABLE_PATH
+            env.NODE_ENV === "production"
+                ? env.PUPPETEER_EXECUTABLE_PATH
                 : puppeteer.executablePath(),
       })
     const page = await browser.newPage()
