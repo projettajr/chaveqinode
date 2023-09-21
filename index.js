@@ -173,7 +173,7 @@ try {
                     var cod = 'Errou'
                 }
                 if (cod === 'Errou'){
-                    content.reply('Olá, ' + (from.first_name) + (chave) + '! Não reconheci o códiogo da chave, verifica se tá certo e tenta de novo, moral.')
+                    content.reply('Olá, ' + (from.first_name) + '! Não reconheci o códiogo da chave, verifica se tá certo e tenta de novo, moral.')
                     
                 }
                 else if (cod != 'Errou'){
