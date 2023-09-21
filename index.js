@@ -216,4 +216,3 @@ catch {
     console.log('Errinho')
     //Só pra garantir
 }
-
