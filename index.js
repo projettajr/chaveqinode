@@ -141,48 +141,75 @@ async function logar(cod) {
 //doc.loadInfo()
 
 //console.log(doc.title)
+try {
+    bot.help(async content => {
+        const from = content.update.message.from
+        content.reply('Olá, ' + (from.first_name) + '!\nPara verificar a disponibilidade de alguma chave é só escrever:\n/status + [CODIGO DA CHAVE].\nEx.:\n/status c5')
+    })
 
-bot.help(async content => {
-    const from = content.update.message.from
-    content.reply('Olá, ' + (from.first_name) + '!\nPara verificar a disponibilidade de alguma chave é só escrever:\n/status + [CODIGO DA CHAVE].\nEx.:\n/status c5')
-})
-
-bot.on('text', async content => {
-    const from = await content.update.message.from
-    const comando = await content.update.message.text
-    const validacao = 'status'
-    if (comando.split("")[0] = '/')
-        if (comando.includes(validacao)){
-            var cod = 'Errou'
-            const chave = await comando.split(" ")[1]
-            let chaves = await infos()
-            if (chave === chaves[0])
-                cod = chaves[4]
-            else if (chave === chaves[1])
-                cod = chaves[5]
-            else if (chave === chaves[2])
-                cod = chaves[6]
-            else if (chave === chaves[3])
-                cod = chaves[7]
-            if (cod === 'Errou'){
-                content.reply('Olá, ' + (from.first_name) + '! Não reconheci o códiogo da chave, verifica se tá certo e tenta de novo, moral.')
-                console.log(chaves[0])
-            }
-            else if (cod != 'Errou'){
-                var idf = await logar(cod)
-                if (idf === 'Livre')
-                    content.reply('Chave ' + (chave) + ' livre para uso. Faz logo a reserva e cuida nesse teu projeto.')
-                else{
-                    var safade = await safadinho(idf)
-                    if (safade === 'Nada')
-                        content.reply('Chave ' + (chave) + ' em uso por um usuário sem cadastro.')
-                    else
-                        content.reply('Chave ' + (chave) + ' em uso por ' + (safade))
+    bot.on('text', async content => {
+        const from = await content.update.message.from
+        const comando = await content.update.message.text
+        const validacao = 'status'
+        if (comando.split("")[0] = '/')
+            if (comando.includes(validacao)){
+                try {
+                    var cod = 'Errou'
+                    var chave = await comando.split(" ")[1]
+                    let chaves = await infos()
+                    //console.log(chaves[0])
+                    if (chave === chaves[0])
+                    //chave === chaves[0]
+                        cod = chaves[4]
+                    else if (chave === chaves[1])
+                        cod = chaves[5]
+                    else if (chave === chaves[2])
+                        cod = chaves[6]
+                    else if (chave === chaves[3])
+                        cod = chaves[7]
+                
+                }catch {
+                    content.reply('Olá, ' + (from.first_name) + '! Não consegui acessar a planilha de códigos, fala com o suporte ae.')
+                    var cod = 'Errou'
+                }
+                if (cod === 'Errou'){
+                    content.reply('Olá, ' + (from.first_name) + (chave) + '! Não reconheci o códiogo da chave, verifica se tá certo e tenta de novo, moral.')
+                    
+                }
+                else if (cod != 'Errou'){
+                    try {
+                        var idf = await logar(cod)
+                    }
+                    catch {
+                        var idf = 'ErroSite'
+                    }
+                    if (idf === 'ErroSite')
+                        content.reply('Olá, ' + (from.first_name) + '! Não consegui acessar o site da AltoQi, fala com o suporte ae.')
+                    else if (idf === 'Livre')
+                        content.reply('Chave ' + (chave) + ' livre para uso. Faz logo a reserva e cuida nesse teu projeto.')
+                    else{
+                        try {
+                            var safade = await safadinho(idf)
+                        }
+                        catch {
+                            var safade = 'ErroPlanilha'
+                        }
+                        if (safade === 'ErroPlanilha')
+                            content.reply('Olá, ' + (from.first_name) + '! Não consegui acessar os códigos dos membros, fala com o suporte ae.')
+                        else if (safade === 'Nada')
+                            content.reply('Chave ' + (chave) + ' em uso por um usuário sem cadastro.')
+                        else
+                            content.reply('Chave ' + (chave) + ' em uso por ' + (safade))
+                    }
                 }
             }
-        }
-            //console.log(chave)
-            
-})
+                //console.log(chave)
+                
+    })
 
-bot.startPolling()
+    bot.startPolling()
+}
+catch {
+    console.log('Errinho')
+    //Só pra garantir
+}
