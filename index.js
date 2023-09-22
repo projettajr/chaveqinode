@@ -229,8 +229,8 @@ try {
                 //console.log(chave)
                 
     })
-
-    bot.startPolling()
+    bot.launch()
+    //bot.startPolling()
     var range = 'GERAL!D48'
 
     const response2 = appget2(range)
