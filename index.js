@@ -38,11 +38,29 @@ async function appget() {
     //console.log(response.data.values[1][1])
 }
 
+async function appget2(range) {
+    const { googleSheetsInstance } = await Aee()
+
+    const response2 = await googleSheetsInstance.spreadsheets.values.update({
+        spreadsheetId: spreadsheetId,
+        valueInputOption: "USER_ENTERED",
+        range: range,
+        resource: {
+            values: [
+                ['dty']
+            ]
+          }
+    })
+    return { response2 }
+    //console.log(response.data.values.length)
+    //console.log(response.data.values[1][1])
+}
+
 async function safadinho(idf) {
     const { response } = await appget()
     const nsafados = await response.data.values.length
     let codes = await response.data.values
-    var n = 1
+    var n = 1 
     var safade = 'Nada'
     console.log(nsafados)
     while ((n+1) < nsafados) {
@@ -139,6 +157,7 @@ async function logar(cod) {
     return idf
 }
 
+
 //doc.loadInfo()
 
 //console.log(doc.title)
@@ -211,6 +230,10 @@ try {
     })
 
     bot.startPolling()
+    var range = 'GERAL!D48'
+
+    const response2 = appget2(range)
+    response2.data
 }
 catch {
     console.log('Errinho')
