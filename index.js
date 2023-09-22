@@ -47,7 +47,7 @@ async function appget2(range) {
         range: range,
         resource: {
             values: [
-                ['dty']
+                ['ehh']
             ]
           }
     })
