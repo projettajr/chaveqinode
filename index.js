@@ -73,6 +73,7 @@ async function safadinho(idf) {
             var n = await nsafados
         }
     }
+    console.log(safade)
     return safade
 }
 
