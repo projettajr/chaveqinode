@@ -230,10 +230,10 @@ try {
     })
 
     bot.startPolling()
-    var range = 'GERAL!D48'
+    //var range = 'GERAL!D48'
 
-    const response2 = appget2(range)
-    response2.data
+    //const response2 = appget2(range)
+    //response2.data
 }
 catch {
     console.log('Errinho')
