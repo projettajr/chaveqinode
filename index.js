@@ -244,7 +244,7 @@ try {
     //response2.data
 }
 catch {
-    console.log('Errinho')
+    console.log('Erroo')
     //Só pra garantir
 }
 finally {
