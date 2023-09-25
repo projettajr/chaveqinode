@@ -1,13 +1,13 @@
 const env = require('./.env')
 const puppeteer = require('puppeteer')
 //require("dotenv").config()
-const express = require("express")
+//const express = require("express")
 const { Telegraf } = require('telegraf')
 const { google } = require('googleapis')
 const { GoogleSpreadsheet } = require('google-spreadsheet')
 const credenciais = require('./spry-sequence-357517-d1ca6ab92278.json')
 const { JWT } = require('google-auth-library')
-const app = express()
+//const app = express()
 //iniciando bot
 
 const bot = new Telegraf(env.token)
@@ -167,9 +167,9 @@ async function logar(cod) {
 //console.log(doc.title)
 //while(continuidade === 1){
 try {
-    app.get("/", (req, res) => {
-        res.send("Render Puppeteer server is up and running!");
-    })
+    //app.get("/", (req, res) => {
+    //    res.send("Render Puppeteer server is up and running!");
+    //})
     
     bot.help(async content => {
         const from = content.update.message.from
