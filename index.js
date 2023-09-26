@@ -1,19 +1,19 @@
 const env = require('./.env')
 const puppeteer = require('puppeteer')
 //require("dotenv").config()
-//const express = require("express")
+const express = require("express")
 const { Telegraf } = require('telegraf')
 const { google } = require('googleapis')
 const { GoogleSpreadsheet } = require('google-spreadsheet')
 const credenciais = require('./spry-sequence-357517-d1ca6ab92278.json')
 const { JWT } = require('google-auth-library')
-//const app = express()
+const app = express()
 //iniciando bot
 
 const bot = new Telegraf(env.token)
 const spreadsheetId = '1h4UBhopK6XHFsZes_4PFzdlYocj2BW9X9cXkUxE7jPI'
 var continuidade = 1
-
+const PORT = 4000
 async function Aee() {
 
     const serviceAccountAuth = new google.auth.GoogleAuth({
@@ -167,9 +167,16 @@ async function logar(cod) {
 //console.log(doc.title)
 //while(continuidade === 1){
 try {
-    //app.get("/", (req, res) => {
-    //    res.send("Render Puppeteer server is up and running!");
-    //})
+    app.get("/home", (req, res) => {
+        res.status(200).json('Welcome, your app is working well')
+        //res.send("Render Puppeteer server is up and running!")
+    })
+
+    app.listen(PORT, () => {
+        console.log(`Server running at http://localhost:${PORT}`)
+    })
+
+    module.exports = app
     
     bot.help(async content => {
         const from = content.update.message.from
