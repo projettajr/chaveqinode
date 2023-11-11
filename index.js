@@ -134,8 +134,8 @@ async function logar(cod) {
     await page.keyboard.press('Enter')
     console.log('03.1')
     await page.waitForNavigation()
-
-    await page.waitForTimeout(3000)
+    console.log('03.2')
+    await page.waitForTimeout(4000)
     console.log('04')
     const data1 = await page.evaluate( async () => {
         let data1 = []
