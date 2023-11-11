@@ -127,11 +127,12 @@ async function logar(cod) {
     await page.keyboard.press('Enter')
     await page.waitForTimeout(500)
     console.log('03')
+    console.log(cod)
     // Troque os valores de process.env.UNSPLASH_EMAIL e process.env.UNSPLASH_PASS pelo seu login e senha :)
     await page.type('[name="entitlementid"]', cod)
-  
+    await page.waitForTimeout(200)
     await page.keyboard.press('Enter')
-  
+    console.log('03.1')
     await page.waitForNavigation()
 
     await page.waitForTimeout(3000)
