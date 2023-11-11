@@ -116,14 +116,16 @@ async function logar(cod) {
       })
     const page = await browser.newPage()
     await page.goto('https://altoqi.prod.sentinelcloud.com/ems/customerLogin.html')
+    await page.waitForTimeout(500)
   
     // - Acessa a página de login
     await page.click('[name="selectLoginType"]')
-    
+    await page.waitForTimeout(500)
 
     // - Acessa a página de login
     await page.keyboard.press('ArrowDown')
     await page.keyboard.press('Enter')
+    await page.waitForTimeout(500)
   
     // Troque os valores de process.env.UNSPLASH_EMAIL e process.env.UNSPLASH_PASS pelo seu login e senha :)
     await page.type('[name="entitlementid"]', cod)
