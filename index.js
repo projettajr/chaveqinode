@@ -117,16 +117,16 @@ async function logar(cod) {
     const page = await browser.newPage()
     await page.goto('https://altoqi.prod.sentinelcloud.com/ems/customerLogin.html')
     await page.waitForTimeout(500)
-  
+    console.log('01')
     // - Acessa a página de login
     await page.click('[name="selectLoginType"]')
     await page.waitForTimeout(500)
-
+    console.log('02')
     // - Acessa a página de login
     await page.keyboard.press('ArrowDown')
     await page.keyboard.press('Enter')
     await page.waitForTimeout(500)
-  
+    console.log('03')
     // Troque os valores de process.env.UNSPLASH_EMAIL e process.env.UNSPLASH_PASS pelo seu login e senha :)
     await page.type('[name="entitlementid"]', cod)
   
@@ -135,7 +135,7 @@ async function logar(cod) {
     await page.waitForNavigation()
 
     await page.waitForTimeout(3000)
-    
+    console.log('04')
     const data1 = await page.evaluate( async () => {
         let data1 = []
         const titles = await document.querySelector('#selectedActivation > td:nth-child(4)').innerText
@@ -143,7 +143,7 @@ async function logar(cod) {
         return data1
     })
     console.log(data1[0])
-
+    console.log('05')
     var idf = 'Livre'
 
     if (data1[0] === 'Activated'){
